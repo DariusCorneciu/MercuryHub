@@ -1,6 +1,6 @@
 # Mercury HUB
 
-**Mercury HUB** is a WPF desktop application designed to help front desk staff manage and assign bookings received from the [Mercury Booking](https://example.com) website. It communicates with a REST API to synchronize data and provides a clean interface for handling daily tasks in hospitality management.
+**Mercury HUB** is a WPF desktop application designed to help front desk staff manage and assign bookings received from the [Mercury Booking](https://github.com/DariusCorneciu/MercuryApp) website. It communicates with a REST API to synchronize data and provides a clean interface for handling daily tasks in hospitality management.
 
 ## 🔧 Features
 

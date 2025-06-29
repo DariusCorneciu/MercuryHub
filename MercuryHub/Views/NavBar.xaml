@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="MercuryHub.Views.DashboardView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:local="clr-namespace:MercuryHub.Views"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            xmlns:viewModels="clr-namespace:MercuryHub.ViewModels">
+
+   <Grid>
+       <Grid.ColumnDefinitions>
+           <ColumnDefinition Width="250"/>
+           <ColumnDefinition Width="*"/>
+       </Grid.ColumnDefinitions>
+
+       <!-- Navigation Drawer -->
+       <materialDesign:Card Grid.Column="0" Margin="16" >
+           <DockPanel>
+               <!-- User Profile Section -->
+               <StackPanel DockPanel.Dock="Top" Margin="16">
+                   <materialDesign:ColorZone Mode="PrimaryMid" Padding="16" CornerRadius="8">
+                       <StackPanel>
+                           <TextBlock Text="Mercury Hub"
+                                    Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                    HorizontalAlignment="Center"
+                                    Foreground="White"/>
+                           <TextBlock Text="{Binding Username}"
+                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                    HorizontalAlignment="Center"
+                                    Margin="0,8,0,0"
+                                    Foreground="White"/>
+                           <TextBlock Text="{Binding UserRole, StringFormat=Job: {0}}"
+                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                                    HorizontalAlignment="Center"
+                                    Margin="0,8,0,0"
+                                    Foreground="White"/>
+                       </StackPanel>
+                   </materialDesign:ColorZone>
+               </StackPanel>
+
+               <ListBox x:Name="MenuItems" 
+                       DockPanel.Dock="Top" >
+                   <ListBox.ItemContainerStyle>
+                       <Style TargetType="ListBoxItem">
+                           <Setter Property="Background" Value="Transparent" />
+                           <Setter Property="BorderThickness" Value="0" />
+                           <Setter Property="OverridesDefaultStyle" Value="True" />
+                           <Setter Property="Margin" Value="0,10"></Setter>
+                           <Setter Property="Template">
+                               <Setter.Value>
+                                   <ControlTemplate TargetType="ListBoxItem">
+                                       <ContentPresenter />
+                                   </ControlTemplate>
+                               </Setter.Value>
+                           </Setter>
+                       </Style>
+                   </ListBox.ItemContainerStyle>
+                                                   
+                   <Button Grid.Row="3"
+                            x:Name="CreateAccountItem"
+                            Content="Manage Accounts"
+                            Visibility="Collapsed"
+                            Command="{Binding ChangeViewCommand}" CommandParameter="CreateAccount"
+                            Style="{DynamicResource MaterialDesignRaisedButton}"
+                            HorizontalAlignment="Stretch" />
+                    <Grid>
+                   <ItemsControl ItemsSource="{Binding Properties}">
+                       <ItemsControl.ItemTemplate>
+                           <DataTemplate>
+                               <Button Content="{Binding}"
+                                       Style="{DynamicResource MaterialDesignRaisedButton}"
+                                       HorizontalAlignment="Stretch"
+                                       CommandParameter="{Binding}" 
+                                       Command="{Binding DataContext.OpenPopUpCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+                           </DataTemplate>
+                       </ItemsControl.ItemTemplate>
+                   </ItemsControl>
+                        <Popup Placement="MousePoint"
+               IsOpen="{Binding DataContext.IsPopupOpen, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}"
+               StaysOpen="False">
+                            <Border Background="White" Padding="10" BorderBrush="Purple" BorderThickness="1">
+                                <StackPanel>
+                                    <TextBlock>
+                                        <Run Text="Selected Hotel: "/>
+                                        <Run Text="{Binding SelectedHotelName}" FontWeight="Bold" FontStyle="Italic" />
+                                    </TextBlock>
+                                    <Button Margin="0,10" Content="Edit Reservations"
+                                            Command="{Binding ChangeViewEditCommand}" CommandParameter="{Binding SelectedHotelName}"
+                                            />
+                                    <Button Margin="0,10" Content="Show Reservations"
+                                             Command="{Binding ChangeViewShowCommand}" CommandParameter="{Binding SelectedHotelName}"/>
+                                </StackPanel>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                   <Button Grid.Row="3"
+                          Content="Guests"
+                          Command="{Binding ChangeViewCommand}" CommandParameter="Guests"
+                          Style="{DynamicResource MaterialDesignRaisedButton}" />
+                   <Button Grid.Row="3"
+                          Content="Reports"
+                          Command="{Binding ChangeViewCommand}" CommandParameter="Reports"
+                          Style="{DynamicResource MaterialDesignRaisedButton}"
+                          HorizontalAlignment="Stretch" />
+                   <Button Grid.Row="3"
+                       Content="Sync Reservations"
+                       Command="{Binding SyncCommand}"
+                       Style="{DynamicResource MaterialDesignRaisedButton}" />
+
+                    
+                </ListBox>
+
+           
+            </DockPanel>
+           
+        </materialDesign:Card>
+
+    </Grid>
+</UserControl>

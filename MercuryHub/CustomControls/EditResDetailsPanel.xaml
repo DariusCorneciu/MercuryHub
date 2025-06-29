@@ -1,0 +1,151 @@
+﻿<UserControl x:Class="MercuryHub.CustomControls.EditResDetailsPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:MercuryHub.CustomControls"
+             mc:Ignorable="d" 
+           Visibility="{Binding VisibilityPanel}">
+    <Border Width="700" Background="White" BorderBrush="Gray" BorderThickness="1" Padding="10">
+        <StackPanel >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Column="0"
+               FontSize="16"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center">
+                    <Run FontWeight="Bold" Text="Reservation: "/>
+                    <Run FontWeight="Bold" FontStyle="Italic" Text="{Binding Reservation.bookingCode}"/>
+                </TextBlock>
+
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button
+                        Width="40"
+                        Command="{Binding EditCommand}"
+                        Style="{StaticResource MaterialDesignToolButton}">
+                        <materialDesign:PackIcon Kind="Edit" />
+                    </Button>
+
+
+                    <Button
+                        Width="40"
+                        Command="{Binding CloseCommand}"
+                        Style="{StaticResource MaterialDesignToolButton}">
+                        <materialDesign:PackIcon Kind="Close" />
+                    </Button>
+                  
+
+                </StackPanel>
+                
+            </Grid>
+            
+            <StackPanel HorizontalAlignment="Center" Margin="0,5">
+                        
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBox
+                     Width="200"
+                     Margin="0,0,5,0"
+                     IsEnabled="{Binding CanSubmit}"
+                     materialDesign:HintAssist.Hint="Number Of Guests"
+                     Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                     Text="{Binding Reservation.numberOfGuests, UpdateSourceTrigger=PropertyChanged}" 
+                        PreviewTextInput="NumberOnly_PreviewTextInput"
+                        DataObject.Pasting="NumberOnly_Pasting"/>             
+                    <TextBox
+                     Width="200"
+                     IsEnabled="{Binding CanSubmit}"
+                     materialDesign:HintAssist.Hint="Price"
+                     Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                     Text="{Binding Reservation.reservationCost, UpdateSourceTrigger=PropertyChanged}"
+                     PreviewTextInput="DoubleOnly_PreviewTextInput"
+                     DataObject.Pasting="DoubleOnly_Pasting"
+                        
+                        />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <DatePicker
+                                     Width="180"
+                                     Height="30"
+                                 SelectedDate="{Binding Reservation.checkIn, UpdateSourceTrigger=PropertyChanged}"
+                                 Style="{StaticResource MaterialDesignDatePicker}"
+                                 materialDesign:HintAssist.Hint="CheckIn"
+                        SelectedDateChanged="DatePicker_SelectedDateChanged"
+                                 materialDesign:TextFieldAssist.DecorationVisibility="Visible"
+                                     IsEnabled="{Binding CanSubmit}">
+                                                    </DatePicker>
+                    <DatePicker
+                                     Width="180"
+                                     Height="30"
+                                     Margin="40,0,0,0"
+                                    SelectedDate="{Binding Reservation.checkOut, UpdateSourceTrigger=PropertyChanged}"
+                                     Style="{StaticResource MaterialDesignDatePicker}"
+                                     materialDesign:HintAssist.Hint="CheckOut"
+                                      IsEnabled="{Binding CanSubmit}"
+                        SelectedDateChanged="DatePicker_SelectedDateChanged"
+                                     materialDesign:TextFieldAssist.DecorationVisibility="Visible">
+                    </DatePicker>       
+                </StackPanel>
+                 
+            </StackPanel>
+            <Button Margin="0,5"
+                    Width="400" Visibility="{Binding VisibilityButton}" Command="{Binding CheckAvalability}">
+                Check Avalability</Button>
+            <Button Margin="0,5"
+        Width="400" Visibility="{Binding VisibilityFinal}" Command="{Binding EditReservationCommand}">
+                Complete Edit Reservation</Button>
+            <Separator Margin="0,10" Height="1" Background="Gray"/>
+            <TextBlock
+                Text="Selected Rooms"
+                FontWeight="Bold"
+                FontSize="16"
+                VerticalAlignment="Center"
+                 HorizontalAlignment="Center"/>
+            <ListBox ItemsSource="{Binding AvabileRooms}" Margin="0,10" Grid.Column="1"
+                            BorderThickness="0"
+                            Height="400"
+            
+                            ScrollViewer.VerticalScrollBarVisibility="Auto"
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            HorizontalAlignment="Center" Visibility="{Binding VisibilityComplete}"
+            
+            
+                                        >
+                                            <ListBox.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <WrapPanel Orientation="Horizontal" />
+                                                </ItemsPanelTemplate>
+                                            </ListBox.ItemsPanel>
+
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border Width="200" Margin="5"
+                                       Padding="5" BorderBrush="Gray" 
+                                       BorderThickness="1" CornerRadius="5">
+                                                        <StackPanel Orientation="Vertical">
+                                                            <CheckBox Content="{Binding Name}"
+                                                 IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                                 FontWeight="Bold"
+                                                 Command="{Binding DataContext.ToggleRoomCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                                 CommandParameter="{Binding}" />
+                                                            <TextBlock Margin="5,0,0,0">
+                                                       <Run Text="Capacity: " FontWeight="SemiBold"/>
+                                                       <Run Text="{Binding capacity}"/>
+                                                            </TextBlock>
+
+                                                        </StackPanel>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+
+        </StackPanel>
+        
+    </Border>
+</UserControl>

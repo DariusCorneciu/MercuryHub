@@ -1,0 +1,20 @@
+﻿MercuryHub
+1.0.0.0
+
+winexe
+C#
+.cs
+C:\Users\Darius Corneciu\source\repos\MercuryHub\MercuryHub\obj\Debug\net8.0-windows\
+MercuryHub
+none
+false
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+C:\Users\Darius Corneciu\source\repos\MercuryHub\MercuryHub\App.xaml
+15-1458274070
+
+771692116959
+259-566725463
+CustomControls\BindablePassword.xaml;CustomControls\EditResDetailsPanel.xaml;CustomControls\GuestDetailsPanel.xaml;CustomControls\ReservationDetailsPanel.xaml;CustomControls\ToastManager.xaml;CustomControls\ToastMessage.xaml;MainWindow.xaml;Views\ApiKeyPromptView.xaml;Views\CreateAccount.xaml;Views\GuestView.xaml;Views\LoginView.xaml;Views\NavBar.xaml;Views\ReportsView.xaml;Views\ReservationEditor.xaml;Views\ReservationsView.xaml;
+
+False
+

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MercuryHub")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c723dcac55e1cac5c4299d5e44e60e32a4c1943")]
 [assembly: System.Reflection.AssemblyProductAttribute("MercuryHub")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MercuryHub")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

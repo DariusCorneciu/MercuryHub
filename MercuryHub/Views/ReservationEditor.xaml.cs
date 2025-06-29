@@ -22,9 +22,7 @@ using MercuryHub.ViewModels;
 
 namespace MercuryHub.Views
 {
-    /// <summary>
-    /// Interaction logic for ReservationEditor.xaml
-    /// </summary>
+   
     public partial class ReservationEditor : UserControl
     {
      

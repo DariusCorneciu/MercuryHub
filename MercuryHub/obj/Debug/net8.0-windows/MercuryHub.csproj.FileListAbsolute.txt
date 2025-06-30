@@ -218,3 +218,4 @@ C:\Users\Darius Corneciu\source\repos\MercuryHub\MercuryHub\obj\Debug\net8.0-win
 C:\Users\Darius Corneciu\source\repos\MercuryHub\MercuryHub\obj\Debug\net8.0-windows\CustomControls\EditResDetailsPanel.baml
 C:\Users\Darius Corneciu\source\repos\MercuryHub\MercuryHub\obj\Debug\net8.0-windows\Views\ReportsView.g.cs
 C:\Users\Darius Corneciu\source\repos\MercuryHub\MercuryHub\obj\Debug\net8.0-windows\Views\ReportsView.baml
+C:\Users\Darius Corneciu\source\repos\MercuryHub\MercuryHub\obj\Debug\net8.0-windows\MercuryHub.sourcelink.json

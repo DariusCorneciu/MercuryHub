@@ -243,7 +243,7 @@ namespace MercuryHub.ViewModels
                 .Where(r => !occupiedRoomIds.Contains(r.Id)).ToList();
 
             AvabileRooms.Clear();
-
+            SelectedRooms.Clear();
             foreach (var room in availableRooms)
             {
                 AvabileRooms.Add(new AvabileRoomDTO

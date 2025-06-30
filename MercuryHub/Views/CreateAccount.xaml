@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="400"
-                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:MercuryHub.ViewModels" xmlns:customcontrols="clr-namespace:MercuryHub.CustomControls"
-              xmlns:local="clr-namespace:MercuryHub.ViewModels"
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local="clr-namespace:MercuryHub.ViewModels" xmlns:customcontrols="clr-namespace:MercuryHub.CustomControls"
+        
              >
     <UserControl.Resources>  
        <local:CreateAccountViewModel x:Key="CreateAccount"/>  
@@ -19,7 +19,7 @@
     
     <Grid Margin="16">
 
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Visibility="{Binding VisibilityCreate,UpdateSourceTrigger=PropertyChanged}">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Visibility="{Binding VisibilityCreate}">
             <TextBlock Text="Create Account" 
                        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
                        HorizontalAlignment="Center"/>
@@ -52,7 +52,7 @@
                     />
         </StackPanel>
 
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Visibility="{Binding VisibilityEdit,UpdateSourceTrigger=PropertyChanged}">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Visibility="{Binding VisibilityEdit}">
             <TextBlock Text="Edit Account" 
                 Style="{StaticResource MaterialDesignHeadline6TextBlock}"
                 HorizontalAlignment="Center"/>

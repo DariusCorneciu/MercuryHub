@@ -364,17 +364,25 @@ namespace MercuryHub.ViewModels
 
             var reservationCheckOut = Reservation.StartDate.AddDays(Reservation.DurationDays);
 
-          
+            var currentReservation = _localContext.Reservations
+                .Where(r => r.Id == Reservation.Id).FirstOrDefault();
+
+            if(currentReservation == null)
+            {
+                ToastManager.Show("Reservation does not exists anymore!", ToastType.Error);
+                return;
+            }
+
             var occupiedRoomIds = _localContext.Reservations
-                .Where(r =>
-                    r.reservationStatus == BookingService.ReservationStatus.Confirmed &&
-                    r.checkIn >= Reservation.StartDate &&
-                    r.checkOut <= reservationCheckOut &&
-                    r.PropertyId == Reservation.propertyId)
-                .SelectMany(r => r.requestedRooms)
-                .Select(rr => rr.RoomId)
-                .Distinct()
-                .ToList();
+     .Where(r =>
+         r.reservationStatus == BookingService.ReservationStatus.Confirmed &&
+         r.PropertyId == Reservation.propertyId &&
+         r.checkIn < currentReservation.checkOut &&      
+         r.checkOut > currentReservation.checkIn)        
+     .SelectMany(r => r.requestedRooms)
+     .Select(rr => rr.RoomId)
+     .Distinct()
+     .ToList();
 
             var availableRooms = _localContext.Rooms
                 .Where(r => !occupiedRoomIds.Contains(r.Id))

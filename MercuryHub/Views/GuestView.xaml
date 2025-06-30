@@ -39,7 +39,7 @@
                     <TextBox
          Width="200"
          Margin="0,0,5,0"
-         materialDesign:HintAssist.Hint="Fist Name"
+         materialDesign:HintAssist.Hint="First Name"
          Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
          Text="{Binding PersonalInformation.FirstName, UpdateSourceTrigger=PropertyChanged}" />
                     <TextBox

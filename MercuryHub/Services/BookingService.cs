@@ -161,10 +161,10 @@ namespace MercuryHub.Services
 
                 List<Property> properties = await _localContext.Properties.ToListAsync();
                 var json = await response.Content.ReadAsStringAsync();
-                var remoteReservations = JsonSerializer.Deserialize<List<HubReservationDTO>>(json, new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
+                    var remoteReservations = JsonSerializer.Deserialize<List<HubReservationDTO>>(json, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
 
 
                 if (remoteReservations == null || !remoteReservations.Any())
